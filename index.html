@@ -34,14 +34,14 @@
         </header>
 
         <main class="main-content">
-            <section class="section">
+            <section class="section scroll-reveal">
                 <h2 class="section-title">Professional Summary</h2>
                 <p class="summary">
                     Front-End Developer with 3+ years of experience building and maintaining production-grade web applications using React, Next.js, and modern front-end toolchains. Passionate about clean architecture, performance, and developer experience. Comfortable working in collaborative, agile environments and delivering scalable, maintainable systems. Open to relocation, particularly interested in opportunities based in Tehran.
                 </p>
             </section>
 
-            <section class="section">
+            <section class="section scroll-reveal">
                 <h2 class="section-title">Work Experience</h2>
                 
                 <div class="job">
@@ -92,7 +92,7 @@
                 </div>
             </section>
 
-            <section class="section">
+            <section class="section scroll-reveal">
                 <h2 class="section-title">Technical Skills</h2>
                 <div class="skills-grid">
                     <div class="skill-category">
@@ -147,7 +147,7 @@
                 </div>
             </section>
 
-            <section class="section">
+            <section class="section scroll-reveal">
                 <h2 class="section-title">Education</h2>
                 <div class="education">
                     <div class="education-title">Bachelor of Computer Engineering</div>
@@ -158,5 +158,44 @@
             </section>
         </main>
     </div>
+
+    <script>
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all scroll-reveal elements
+        document.querySelectorAll('.scroll-reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add staggered animation to skill tags
+        document.querySelectorAll('.skill-category').forEach((category, categoryIndex) => {
+            const tags = category.querySelectorAll('.skill-tag');
+            tags.forEach((tag, tagIndex) => {
+                tag.style.animationDelay = `${categoryIndex * 0.1 + tagIndex * 0.05}s`;
+            });
+        });
+
+        // Add click effect to skill tags
+        document.querySelectorAll('.skill-tag').forEach(tag => {
+            tag.addEventListener('click', () => {
+                tag.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    tag.style.transform = '';
+                }, 150);
+            });
+        });
+    </script>
 </body>
 </html>
