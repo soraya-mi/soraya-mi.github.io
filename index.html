@@ -1,43 +1,475 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Soraya Mehrabi Resume</title>
-    <h1 id="mainheading"></h1>
-  </head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="./css/scss.scss" />
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soraya Mehrabi - Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <body></body>
-  <header></header>
-  <h1>Resume</h1>
-  <h2>Soraya Mehrabi</h2>
-  <h3>Front end development intern</h3>
-  <div class="contact">
-    <div class="email"><i></i>sorayami79@gmail.com</div>
-    <div class="linkedin"><i></i>linkedin.com/in/soraya-mehrabi-067ab4195</div>
-  </div>
-  <div class="content">
-    <div class="education"></div>
-    <div class="skills">
-      Python (Programming Language) • English • css • C++ • HTML • JavaScript •
-      Visual Paradigm
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+            padding: 20px;
+        }
+
+        .resume-container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+            color: white !important;
+            padding: 15px 30px;
+            text-align: center;
+            position: relative;
+            -webkit-print-color-adjust: exact !important;
+            color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .name {
+            font-size: 2.0em;
+            font-weight: 300;
+            margin-bottom: 5px;
+            letter-spacing: 1.5px;
+        }
+
+        .title {
+            font-size: 1.1em;
+            font-weight: 400;
+            opacity: 0.9;
+            margin-bottom: 12px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            font-size: 0.9em;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .main-content {
+            padding: 35px 45px;
+        }
+
+        .section {
+            margin-bottom: 22px;
+        }
+
+        .section-title {
+            font-size: 1.25em;
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 12px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #667eea;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: #764ba2;
+        }
+
+        .summary {
+            font-size: 1.0em;
+            line-height: 1.6;
+            color: #555;
+            text-align: justify;
+        }
+
+        .job {
+            margin-bottom: 15px;
+            padding: 12px;
+            background: #f8f9fa !important;
+            border-radius: 6px;
+            border-left: 3px solid #667eea !important;
+            -webkit-print-color-adjust: exact !important;
+            color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+
+        .job-title {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .company {
+            font-size: 1.0em;
+            color: #667eea;
+            font-weight: 500;
+        }
+
+        .job-date {
+            font-size: 0.85em;
+            color: #666;
+            font-style: italic;
+        }
+
+        .job-description {
+            list-style: none;
+            padding: 0;
+        }
+
+        .job-description li {
+            margin-bottom: 4px;
+            padding-left: 18px;
+            position: relative;
+            line-height: 1.4;
+            font-size: 0.95em;
+        }
+
+        .job-description li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: #f8f9fa !important;
+            padding: 20px;
+            border-radius: 8px;
+            border-top: 3px solid #667eea !important;
+            -webkit-print-color-adjust: exact !important;
+            color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        .skill-category h4 {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: #667eea !important;
+            color: white !important;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+            -webkit-print-color-adjust: exact !important;
+            color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        .education {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .education-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .education-details {
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .education-location {
+            color: #888;
+            font-size: 0.9em;
+        }
+
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .resume-container {
+                box-shadow: none;
+                border-radius: 0;
+                margin-bottom: 30px;
+                page-break-inside: avoid;
+            }
+            
+            .main-content {
+                padding-bottom: 50px;
+            }
+            
+            .section:not(:first-child) {
+                page-break-before: auto;
+            }
+            
+            .section {
+                page-break-inside: avoid;
+            }
+            
+            /* Add top margin to sections that start on new pages (except first page) */
+            .section:nth-child(n+3) {
+                margin-top: 40px;
+            }
+            
+            .header {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+                color: white !important;
+            }
+            
+            .skill-tag {
+                background: #667eea !important;
+                color: white !important;
+            }
+            
+            .job {
+                background: #f8f9fa !important;
+                border-left: 4px solid #667eea !important;
+            }
+            
+            .skill-category {
+                background: #f8f9fa !important;
+                border-top: 3px solid #667eea !important;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .main-content {
+                padding: 30px;
+            }
+            
+            .header {
+                padding: 30px;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .job-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="name">SORAYA MEHRABI</h1>
+                <div class="title">Front-End Developer</div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span>📞</span>
+                        <span>09140278072</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>✉️</span>
+                        <span>sorayami79@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <span>💼</span>
+                        <a href="https://www.linkedin.com/in/soraya-mehrabi/" target="_blank" style="color: white; text-decoration: none;">LinkedIn</a>
+                    </div>
+                    <div class="contact-item">
+                        <span>🔗</span>
+                        <a href="https://github.com/soraya-mi" target="_blank" style="color: white; text-decoration: none;">GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <section class="section">
+                <h2 class="section-title">Professional Summary</h2>
+                <p class="summary">
+                    Front-End Developer with 3+ years of experience building and maintaining production-grade web applications using React, Next.js, and modern front-end toolchains. Passionate about clean architecture, performance, and developer experience. Comfortable working in collaborative, agile environments and delivering scalable, maintainable systems. Open to relocation, particularly interested in opportunities based in Tehran.
+                </p>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Work Experience</h2>
+                
+                <div class="job">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Front-End Developer</div>
+                            <div class="company">Dotin – Isfahan</div>
+                        </div>
+                        <div class="job-date">September 2023 – Present</div>
+                    </div>
+                    <ul class="job-description">
+                        <li>Standardized code quality using TypeScript and ESLint with custom rules, improving maintainability and reducing runtime bugs.</li>
+                        <li>Refactored legacy components to optimized React code, improving load times and developer productivity.</li>
+                        <li>Built and integrated a scalable design system with Material-UI theming for consistent UI across features.</li>
+                        <li>Migrated from Create React App to Vite, improving build speed and enabling support for React 18.</li>
+                    </ul>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Front-End Developer</div>
+                            <div class="company">Jast Startup – Remote</div>
+                        </div>
+                        <div class="job-date">December 2022 – July 2023</div>
+                    </div>
+                    <ul class="job-description">
+                        <li>Developed health platform features using React.js, Reactstrap, Redux, Context API, and Sass.</li>
+                        <li>Collaborated effectively in a remote team with code reviews and pair programming.</li>
+                        <li>Translated Figma designs into pixel-perfect, maintainable React components.</li>
+                        <li>Built custom voice and video players with responsive design and integrated React Leaflet maps.</li>
+                    </ul>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Junior Front-End Developer</div>
+                            <div class="company">Navax Studio – Isfahan</div>
+                        </div>
+                        <div class="job-date">March 2022 – December 2022</div>
+                    </div>
+                    <ul class="job-description">
+                        <li>Resolved cross-browser issues and contributed to code maintenance.</li>
+                        <li>Implemented secure authentication and efficient data fetching using Axios and React Query.</li>
+                        <li>Built reusable drag-and-drop modules for a custom website builder.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Technical Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Languages & Frameworks</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">TypeScript</span>
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">Next.js</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Styling & UI</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Sass</span>
+                            <span class="skill-tag">Tailwind</span>
+                            <span class="skill-tag">MUI</span>
+                            <span class="skill-tag">Bootstrap</span>
+                            <span class="skill-tag">Ant Design</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>State Management</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Redux</span>
+                            <span class="skill-tag">Zustand</span>
+                            <span class="skill-tag">Context API</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Data & Forms</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">TanStack Query</span>
+                            <span class="skill-tag">Axios</span>
+                            <span class="skill-tag">REST APIs</span>
+                            <span class="skill-tag">React Hook Form</span>
+                            <span class="skill-tag">Formik</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Build Tools & Others</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Vite</span>
+                            <span class="skill-tag">Webpack</span>
+                            <span class="skill-tag">Monorepo</span>
+                            <span class="skill-tag">PWA</span>
+                            <span class="skill-tag">Chart.js</span>
+                            <span class="skill-tag">Leaflet</span>
+                            <span class="skill-tag">Scrum</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Education</h2>
+                <div class="education">
+                    <div class="education-title">Bachelor of Computer Engineering</div>
+                    <div class="education-details">University of Isfahan, Software Branch</div>
+                    <div class="education-details">2018 – 2023</div>
+                    <div class="education-location">Isfahan, Iran</div>
+                </div>
+            </section>
+        </main>
     </div>
-    <div class="exprience">
-      <h3>Exprience</h3>
-    </div>
-    <div class="Language">
-      <h3>Language</h3>
-    </div>
-    <div class="Experience">
-      <h3>Experience</h3>
-    </div>
-    <div class="Education">
-      <h3>Education</h3>
-    </div>
-    <div class="Courses">
-      <h3>Courses</h3>
-    </div>
-  </div>
-  <footer></footer>
+</body>
 </html>
